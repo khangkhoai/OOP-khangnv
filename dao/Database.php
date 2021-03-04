@@ -5,15 +5,18 @@ class Database
 	private $categoryTable;
 	private $accessoryTable;
 	
-	public function getProductTable(){
+	public function getProductTable()
+	{
 		return $this->productTable;
 	}
 
-	public function getCategoryTable(){
+	public function getCategoryTable()
+	{
 		return $this->categoryTable;
 	}
 
-	public function getAccessoryTable(){
+	public function getAccessoryTable()
+	{
 		return $this->accessoryTable;
 	}
 
@@ -26,11 +29,11 @@ class Database
 	{
 		$table = array();
 
-        foreach ($this->$tableName as $item){
-            if($item->getName() == $name){
-                $table[] = $item;
-            }
-        }
+		foreach ($this->$tableName as $item){
+			if($item->getName() == $name){
+				$table[] = $item;
+			}
+		}
 		return $table;
 	}
 
@@ -83,15 +86,15 @@ class Database
 		return false;
 	}
 
-    public function findById($tableName, $id){        
-        foreach ($this->$tableName as $item){
-            if($item->getId() == $id){
-                return $item;
-            }
-        }  
-    }
+	public function findById($tableName, $id){        
+		foreach ($this->$tableName as $item){
+			if($item->getId() == $id){
+				return $item;
+			}
+		}  
+	}
 
-    public function findByName($tableName, $name){    
+	public function findByName($tableName, $name){    
 		foreach ($this->$tableName as $value) 
 		{
 			if ($value->getName() == $name) 
@@ -100,8 +103,7 @@ class Database
 			}
 		}
 		return $product;
-
-    }
+	}
 
 	public function getAllProduct($table)
 	{

@@ -10,18 +10,20 @@ class ProductDAO extends Database
         $this->database = $database;
     }
 
-    public function getDatabase():Database{
+    public function getDatabase():Database
+    {
         return $this->database;
     }
 
-    public function setDatabase($database){
+    public function setDatabase($database)
+    {
         $this->database = $database;
     }
 
 	public function insert($row)
-	{
+    {
 		return $this->database->insertTable($this->tableName, $row);
-	}
+    }
 
 	public function update($row)
 	{
@@ -35,12 +37,12 @@ class ProductDAO extends Database
 
     public function findAll()
     {
-		$tableName = $this->tableName;
-
-        if($this->database->getTable($tableName)){
+        $tableName = $this->tableName;
+        if($this->database->getTable($tableName))
+        {
             return $this->database->getTable($tableName);
         }
-            return false;
+        return false;
     }
 
     public function findByIdAccessory($id)

@@ -18,15 +18,15 @@ class CategoryDAO
         $this->database = $database;
     }
 
-	public function insert($row)
-	{
-		return $this->database->insertTable('categoryTable', $row);
-	}
+    public function insert($row)
+    {
+      return $this->database->insertTable('categoryTable', $row);
+    }
 
-	public function update($row)
-	{
-		return $this->database->updateTable('categoryTable', $row);
-	}
+    public function update($row)
+    {
+      return $this->database->updateTable('categoryTable', $row);
+    }
 
     public function delete($row)
     {
