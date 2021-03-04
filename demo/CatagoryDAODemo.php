@@ -53,4 +53,3 @@ $categoryDaoDemo->updateTest($catagory);
 echo '<pre>';
 print_r($categoryDaoDemo1);
 echo '<pre>';
-?>

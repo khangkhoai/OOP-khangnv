@@ -45,4 +45,3 @@ $productDaoDemo->searchTest('a');
 echo '<pre>';
 print_r($productDaoDemo);
 echo '<pre>';
-?>

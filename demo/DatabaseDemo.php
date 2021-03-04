@@ -35,10 +35,10 @@ class DatabaseDemo extends Database
 	public function initDatabase()
 	{
 		$amountRecord = 10;
-		for ($i=1; $i<=$amountRecord; $i++){
-			$this->insertTableTest('productTable', new Product($i, 'product test '.$i, $i*10));
-			$this->insertTableTest('categoryTable', new Category($i, 'category test'.$i));
-			$this->insertTableTest('accessoryTable', new Accessory($i, 'accessory test'.$i));
+		for ($i = 1; $i <= $amountRecord; $i++) {
+			$this->insertTableTest('productTable', new Product($i, 'product test ' . $i, $i * 10));
+			$this->insertTableTest('categoryTable', new Category($i, 'category test' . $i));
+			$this->insertTableTest('accessoryTable', new Accessory($i, 'accessory test' . $i));
 		}
 	}
 	// public function truncateTableTest($db)
@@ -47,15 +47,15 @@ class DatabaseDemo extends Database
 	// }
 
 }
-$id=1;
+$id = 1;
 $demo = new ProductDemo();
 $demo1 = new ProductDemo();
-$demo->createProductTest($id,'may anh',2);
-$demo1->createProductTest($id,'m anh',2);
+$demo->createProductTest($id, 'may anh', 2);
+$demo1->createProductTest($id, 'm anh', 2);
 $db = new DatabaseDemo();
-$table = $db->insertTable('categoryTable',$demo);
+$table = $db->insertTable('categoryTable', $demo);
 // $table = $db->updateTableTest('categoryTable',$demo1);
-$table = $db->updateTableById('categoryTable',$demo1, 1);
+$table = $db->updateTableById('categoryTable', $demo1, 1);
 // var_dump($db->selectTable('categoryTable','may '));
 // var_dump($db->updateTable('categoryTable',$demo));
 // echo $db->deleteTable('categoryTable',$demo);
@@ -64,4 +64,3 @@ $table = $db->updateTableById('categoryTable',$demo1, 1);
 echo '<pre>';
 print_r($db);
 echo '<pre>';
-?>
