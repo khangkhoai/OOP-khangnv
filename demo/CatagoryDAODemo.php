@@ -31,19 +31,21 @@ class CategoryDaoDemo extends CategoryDao
 		$this->findByIdCatagory($id);
 	}
 
-	public function findByNameTest($name){
-        $this->findByName($name);
-    }
+	public function findByNameTest($name)
+	{
+		$this->findByName($name);
+	}
 
-    public function searchTest($name){
-        $this->selectTable($name);
-    }     
+	public function searchTest($name)
+	{
+		$this->selectTable($name);
+	}
 }
 $db = new Database();
 $categoryDaoDemo = new CategoryDaoDemo($db);
 $categoryDaoDemo1 = new CategoryDaoDemo($db);
-$catagory = new Category(1,'ba');
-$catagory1 = new Category(2,'bb');
+$catagory = new Category(1, 'ba');
+$catagory1 = new Category(2, 'bb');
 $categoryDaoDemo->insertTest($catagory);
 $categoryDaoDemo->insertTest($catagory1);
 $categoryDaoDemo->updateTest($catagory);
