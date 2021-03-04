@@ -2,15 +2,15 @@
 require_once '../dao/Database.php';
 class ProductDAO extends Database
 {
-	protected $database;
-	public $tableName='productTable';
+    protected $database;
+    public $tableName = 'productTable';
 
-	public function __construct($database)
+    public function __construct($database)
     {
         $this->database = $database;
     }
 
-    public function getDatabase():Database
+    public function getDatabase(): Database
     {
         return $this->database;
     }
@@ -37,21 +37,21 @@ class ProductDAO extends Database
 
     public function findAll()
     {
-      $tableName = $this->tableName;
+        $tableName = $this->tableName;
 
-      if($this->database->getTable($tableName)){
-        return $this->database->getTable($tableName);
+        if ($this->database->getTable($tableName)) {
+            return $this->database->getTable($tableName);
+        }
+        return false;
     }
-return false;
-}
 
-public function findByIdProduct($id)
-{
-   return $this->database->findById($this->tableName, $id);
-}
+    public function findByIdProduct($id)
+    {
+        return $this->database->findById($this->tableName, $id);
+    }
 
-public function search($name){
-    return $this->database->selectTable($this->tableName, $name);
-} 
+    public function search($name)
+    {
+        return $this->database->selectTable($this->tableName, $name);
+    }
 }
-?>

@@ -114,5 +114,3 @@ class Database
 		return $product;
 	}
 }
-
-?>

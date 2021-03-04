@@ -25,9 +25,9 @@ class ProductDAO extends Database
     }
 
     public function update($row)
-	{
+    {
         return $this->database->updateTable($this->tableName, $row);
-	}
+    }
 
     public function delete($row)
     {
