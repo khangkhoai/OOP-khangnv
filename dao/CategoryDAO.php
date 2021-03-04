@@ -20,12 +20,12 @@ class CategoryDAO
 
     public function insert($row)
     {
-      return $this->database->insertTable('categoryTable', $row);
+        return $this->database->insertTable('categoryTable', $row);
     }
 
     public function update($row)
     {
-      return $this->database->updateTable('categoryTable', $row);
+        return $this->database->updateTable('categoryTable', $row);
     }
 
     public function delete($row)

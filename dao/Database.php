@@ -28,7 +28,6 @@ class Database
 	public function selectTable($tableName, $name)
 	{
 		$table = array();
-
 		foreach ($this->$tableName as $item){
 			if($item->getName() == $name){
 				$table[] = $item;

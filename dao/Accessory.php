@@ -2,10 +2,9 @@
 require_once '../dao/Database.php';
 class ProductDAO extends Database
 {
-	protected $database;
-	public $tableName='accessoryTable';
-    
-	public function __construct($database)
+    protected $database;
+    public $tableName='accessoryTable';
+    public function __construct($database)
     {
         $this->database = $database;
     }
@@ -20,14 +19,14 @@ class ProductDAO extends Database
         $this->database = $database;
     }
 
-	public function insert($row)
+    public function insert($row)
     {
-		return $this->database->insertTable($this->tableName, $row);
+        return $this->database->insertTable($this->tableName, $row);
     }
 
-	public function update($row)
+    public function update($row)
 	{
-		return $this->database->updateTable($this->tableName, $row);
+        return $this->database->updateTable($this->tableName, $row);
 	}
 
     public function delete($row)
