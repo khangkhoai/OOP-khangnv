@@ -1,7 +1,7 @@
 <?php
 class Category
 {   
-	public categoryId;
+    public categoryId;
     public categoryName;
     
     public function categoryId ()
