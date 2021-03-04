@@ -1,27 +1,29 @@
 <?php
 class Accessory
 {   
-	public accessoryId;
-    public accessoryName;
-
-    public function categoryId ()
-    {
-        return $this->categoryId;
+    public function __construct($id, $name){
+        $this->id = $id;
+        $this->name = $name;
     }
 
-    public function setId ($categoryId)
+    public function getId ()
     {
-        $this->categoryId = $categoryId;
+        return $this->id;
     }
 
-    public function getcategoryName ()
+    public function setId ($id)
+    {
+        $this->id = $id;
+    }
+
+    public function getName ()
     {
         return $this->name;
     }
     
-    public function setcategoryName ($categoryName)
+    public function setName ($name)
     {
-        $this->categoryName = $categoryName;
+        $this->name = $name;
     }
 }
 ?>

@@ -17,6 +17,7 @@ class ProductDemo extends Product
       echo "ID: ".$this->getId()."\nPRODUCT NAME: ".$this->getName()."\nCATEGORY ID: ".$this->getCategoryId()."\n";
    }
 }
+$id=1;
 $demo = new Product();
 $demo = new ProductDemo();
 $demo->createProductTest($id,"may anh",2);

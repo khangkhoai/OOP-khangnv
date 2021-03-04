@@ -4,7 +4,7 @@ class Product
     public $id;
     public $name;
     public $categoryId;
-
+    
     public function getId ()
     {
         return $this->id;
