@@ -1,44 +1,64 @@
 <?php
-require '../entity/Product.php';
-require '../entity/Category.php';
-require '../entity/Accessory.php';
-include '../demo/ProductDemo.php';
-include '../dao/Database.php';
+require_once '../entity/Product.php';
+require_once '../entity/Category.php';
+require_once '../entity/Accessory.php';
+require_once '../demo/ProductDemo.php';
+require_once '../dao/Database.php';
+require_once '../entity/BaseRow.php';
 
-class DatabaseDemo extends Database
+class DatabaseDemo 
 {
-	public function insertTableTest($name, $row)
+	protected $databaseTest;
+	public function __construct(Database $database)
+    {
+        $this->databaseTest = $database;
+    }
+
+    public function getDatabase(): Database
+    {
+        return $this->databaseTest;
+    }
+
+	public function insertTableTest($name,$row)
 	{
-		$this->insertTable($name, $row);
+		$this->databaseTest->insertTable($name, $row);
 	}
 
-	public function selectTableTest($name, $row)
+	public function selectTableTest($name,$row)
 	{
-		$this->selectTable($name, $row);
+		$this->databaseTest->selectTable($name, $row);
 	}
 
-	public function updateTableTest($name, $row)
+	public function updateTableTest($name,$row)
 	{
-		$this->updateTable($name, $row);
+		$this->databaseTest->updateTable($name, $row);
 	}
 
-	public function deleteTableTest($name, $row)
+	public function deleteTableTest($name,$row)
 	{
-		$this->deleteTable($name, $row);
+		$this->databaseTest->deleteTable($name, $row);
 	}
 
-	public function updateTableByIdTest($name, $row, $id)
+	public function updateTableByIdTest($name,$row, $id)
 	{
-		$this->updateTableById($name, $row, $id);
+		$this->databaseTest->updateTableById($name, $row, $id);
 	}
 
+	public function findByNameTest($tableName,$name)
+	{
+		$this->databaseTest->findByName($tableName,$name);
+	}
+	public function findByIdTest($tableName,$id)
+	{
+		$this->databaseTest->findById($tableName,$id);
+	}
 	public function initDatabase()
 	{
 		$amountRecord = 10;
 		for ($i = 1; $i <= $amountRecord; $i++) {
-			$this->insertTableTest('productTable', new Product($i, 'product test ' . $i, $i * 10));
-			$this->insertTableTest('categoryTable', new Category($i, 'category test' . $i));
-			$this->insertTableTest('accessoryTable', new Accessory($i, 'accessory test' . $i));
+			DatabaseDemo::insertTableTest('productTable', new Product($i, 'product test ' . $i, $i * 10));
+			DatabaseDemo::insertTableTest('categoryTable', new Category($i, 'category test' . $i));
+			DatabaseDemo::insertTableTest('accessoryTable', new Accessory($i, 'accessory test' . $i));
 		}
 	}
 	// public function truncateTableTest($db)
@@ -47,20 +67,15 @@ class DatabaseDemo extends Database
 	// }
 
 }
-$id = 1;
-$demo = new ProductDemo();
-$demo1 = new ProductDemo();
-$demo->createProductTest($id, 'may anh', 2);
-$demo1->createProductTest($id, 'm anh', 2);
-$db = new DatabaseDemo();
-$table = $db->insertTable('categoryTable', $demo);
-// $table = $db->updateTableTest('categoryTable',$demo1);
-$table = $db->updateTableById('categoryTable', $demo1, 1);
-// var_dump($db->selectTable('categoryTable','may '));
-// var_dump($db->updateTable('categoryTable',$demo));
-// echo $db->deleteTable('categoryTable',$demo);
-// echo $db->truncateTableTest($db);
-// $db->initDatabase();
+$databaseDemo = new DatabaseDemo(Database::createDatabase());
+//$databaseDemo->insertTableTest();
+$databaseDemo->insertTableTest('categoryTable', new Category(1, 'category update'));
+$databaseDemo->insertTableTest('productTable', new Product(1, 'update',3));
+$databaseDemo->updateTableByIdTest('productTable', new Product(2, 'product',2), 1);
+// $databaseDemo->deleteTableTest('productTable', new Product(2, 'update',3));
+// $databaseDemo->initDatabase();
+// $databaseDemo->findByNameTest('productTable','update');
+$databaseDemo->selectTableTest('productTable',"pr");
 echo '<pre>';
-print_r($db);
+print_r($databaseDemo);
 echo '<pre>';

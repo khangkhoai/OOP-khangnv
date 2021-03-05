@@ -1,30 +1,13 @@
 <?php
-class Product
+require_once '../entity/BaseRow.php';
+class Product extends BaseRow
 {
-    public $id;
-    public $name;
-    public $categoryId;
-    
-    public function getId ()
-    {
-        return $this->id;
-    }
-
-    public function setId ($id)
-    {
+    protected $categoryId;
+    public function __construct($id, $name, $categoryId){
         $this->id = $id;
-    }
-
-    public function getName ()
-    {
-        return $this->name;
-    }
-
-    public function setName ($name)
-    {
         $this->name = $name;
+        $this->categoryId = $categoryId;
     }
-
     public function getCategoryId ()
     {
         return $this->categoryId;

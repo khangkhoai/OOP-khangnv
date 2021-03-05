@@ -1,24 +1,22 @@
 <?php
 require_once '../entity/Product.php';
 
-class ProductDemo extends Product
+class ProductDemo 
 {
-   public $obj;
+   protected $productDemo;
 
-   public function createProductTest($id,$name,$catagoryId)
+   public function createProductTest(&$id,$name, $categoryId)
    {
-      $this->setId($id++);
-      $this->setName($name);
-      $this->setCategoryId($catagoryId);
+      $this->productDemo = new Product($id++, $name, $categoryId);
    }
 
    public function printProduct()
    {
-      echo "ID: ".$this->getId()."\nPRODUCT NAME: ".$this->getName()."\nCATEGORY ID: ".$this->getCategoryId()."\n";
+      echo "ID: ".$this->productDemo->getId()."\nPRODUCT NAME: ".$this->productDemo->getName()."\nCATEGORY ID: ".$this->productDemo->getCategoryId()."\n";
    }
 }
 $id=1;
-$demo = new Product();
+
 $demo = new ProductDemo();
 $demo->createProductTest($id,"may anh",2);
 $demo->printProduct($demo);

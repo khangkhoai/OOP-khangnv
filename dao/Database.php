@@ -1,9 +1,22 @@
 <?php
+require_once '../entity/BaseRow.php';
 class Database
 {
-	private $productTable;
-	private $categoryTable;
-	private $accessoryTable;
+	private static $database;
+	protected $productTable;
+	protected $categoryTable;
+	protected $accessoryTable;
+
+	public function __construct(){}
+
+    public static function createDatabase(): Database
+    {
+        if(self::$database !== null){
+            return self::$database;
+        }
+        self::$database = new self();
+        return self::$database;
+    }
 
 	public function getProductTable()
 	{
@@ -20,7 +33,7 @@ class Database
 		return $this->accessoryTable;
 	}
 
-	public function insertTable($table, $row)
+	public function insertTable($table, BaseRow $row)
 	{
 		return $this->$table[] = $row;
 	}
@@ -36,7 +49,7 @@ class Database
 		return $table;
 	}
 
-	public function updateTable($tableName, $row)
+	public function updateTable($tableName,BaseRow $row )
 	{
 		$id = $row->getId();
 		foreach ($this->$tableName as $key => $value) {
@@ -46,7 +59,7 @@ class Database
 		}
 	}
 
-	public function updateTableById($table, $row, $id)
+	public function updateTableById($table,BaseRow $row, $id)
 	{
 
 		foreach ($this->$table as $key => $value) {
@@ -56,9 +69,9 @@ class Database
 		}
 	}
 
-	public function deleteTable($name, $row)
+	public function deleteTable($name,$id)
 	{
-		$id = $row->getId();
+		
 		foreach ($this->$name as $key => $item) {
 			if ($item->getId() == $id) {
 				unset($this->$name[$key]);
@@ -83,23 +96,22 @@ class Database
 		return false;
 	}
 
-	public function findById($tableName, $id)
+	public function findById($name, $id)
 	{
-		foreach ($this->$tableName as $item) {
-			if ($item->getId() == $id) {
-				return $item;
+		foreach ($this->$name as $key => $item) {
+			if ($item->getId() != $id) {
+				unset($this->$name[$key]);		 
 			}
 		}
 	}
 
 	public function findByName($tableName, $name)
 	{
-		foreach ($this->$tableName as $value) {
-			if ($value->getName() == $name) {
-				$product[] = $value;
+		foreach ($this->$name as $key => $item) {
+			if ($item->getName() != $name) {
+				unset($this->$name[$key]);		 
 			}
 		}
-		return $product;
 	}
 
 	public function getAllProduct($table)

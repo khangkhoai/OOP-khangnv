@@ -1,26 +1,9 @@
 <?php
-class Category
+require_once '../entity/BaseRow.php';
+class Category extends BaseRow
 {   
-
     public function __construct($id, $name){
         $this->id = $id;
-        $this->name = $name;
-    }
-
-    public function getId ()
-    {
-        return $this->id;
-    }
-    public function setId ($id)
-    {
-        $this->id = $id;
-    }
-    public function getName ()
-    {
-        return $this->name;
-    }
-    public function setName ($name)
-    {
         $this->name = $name;
     }
 }
